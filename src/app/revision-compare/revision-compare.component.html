@@ -1,1 +1,39 @@
-<p>revision-compare works!</p>
+<div
+  [draggable]="true"
+  (dragenter)="handleDragEnter($event)"
+  (dragover)="handleDragOver($event)"
+  (dragleave)="handleDragLeave($event)"
+  (dragend)="handleDragEnd($event)"
+  (drop)="handleDrop($event)"
+  class="revison-outer-container">
+  <div>
+    <div>
+      <span>上一版本文件名：</span>
+      <span>{{ _previousFile?.name ?? _fileNamePlaceHolderText }}</span>
+    </div>
+    <div>
+      <span>当前版本文件名：</span>
+      <span>{{ _currentFile?.name ?? _fileNamePlaceHolderText }}</span>
+    </div>
+    <div class="buttons-container">
+      <button [disabled]="!(_currentFile || _previousFile)" (click)="clear()">清除当前已上传文件</button>
+      <button [disabled]="!(_currentFile?.type==='text/plain' && _previousFile?.type==='text/plain')" (click)="compare()">启动对比</button>
+      <span>（提示：暂时只支持纯文本文件的对比。）</span>
+    </div>
+  </div>
+  <div class="compare-area">
+    <ng-container *ngFor="let command of _editScript">
+      <div class="line">
+        <span>{{ command.lineNumber }}</span>
+        <div
+        class="line-content"
+      [class.line-inserted]="command.type==='insert'"
+      [class.line-deleted]="command.type==='delete'"
+      >
+      <span >{{ command.operationContent }}</span>
+      </div>
+      </div>
+      
+    </ng-container>
+  </div>
+</div>

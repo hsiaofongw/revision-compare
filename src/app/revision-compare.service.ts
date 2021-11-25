@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
  * type === 'delete' means delete A[lineNumber]
  *
  */
-type EditCommand = {
+export type EditCommand = {
   type: 'keep' | 'insert' | 'delete';
   lineNumber: number;
   operationContent: string;
@@ -18,7 +18,7 @@ type EditCommand = {
  * A EditScript is basically something that describes "how to get to B from A",
  * where A is previous version, B is current version.
  */
-type EditScript = EditCommand[];
+export type EditScript = EditCommand[];
 
 class Point {
   private _x = 0;

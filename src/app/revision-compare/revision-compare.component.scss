@@ -1,0 +1,35 @@
+.revison-outer-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.compare-area {
+  border: 1px solid #ccc;
+  flex: 1;
+}
+
+.buttons-container {
+  margin-top: 6px;
+  display: flex;
+  column-gap: 10px;
+}
+
+.line-inserted {
+  background-color: #96F2D7;
+}
+
+.line-deleted {
+  background-color: #FFA8A8;
+}
+
+.line {
+  display: flex;
+  column-gap: 10px;
+  row-gap: 6px;
+}
+
+.line-content {
+  flex: 1;
+}
